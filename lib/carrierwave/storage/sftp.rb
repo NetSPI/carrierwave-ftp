@@ -58,11 +58,11 @@ module CarrierWave
         end
 
         def read
-          file.body
+          file
         end
 
         def content_type
-          @content_type || file.content_type
+          @content_type || MIME::Types.type_for(full_path).first.content_type
         end
 
         def content_type=(new_content_type)
@@ -83,12 +83,13 @@ module CarrierWave
         end
 
         def file
-          require 'net/http'
-          url = URI.parse(self.url)
-          req = Net::HTTP::Get.new(url.path)
-          Net::HTTP.start(url.host, url.port) do |http|
-            http.request(req)
+          file_data = nil
+
+          connection do |sftp|
+            file_data = sftp.download!(full_path)
           end
+
+          file_data
         end
 
         def connection
