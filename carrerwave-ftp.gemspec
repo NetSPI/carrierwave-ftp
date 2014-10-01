@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "carrierwave", [">= 0.6.2"]
   s.add_dependency "net-sftp", ["~> 2.1.2"]
-  s.add_dependency "mime-types", ["~> 2.3"]
+  s.add_dependency "mime-types", ["~> 1.25.1"]
   s.add_development_dependency "rspec", ["~> 2.14"]
   s.add_development_dependency "rake", ["~> 10.3"]
 end
