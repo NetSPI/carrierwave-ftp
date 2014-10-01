@@ -39,7 +39,7 @@ module CarrierWave
         def to_file
           temp_file = Tempfile.new(filename)
           temp_file.binmode
-          temp_file.write file.body
+          temp_file.write file
           temp_file
         end
 
